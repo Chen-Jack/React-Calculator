@@ -1,21 +1,17 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 
+
 const NumberLabel = styled.h1`
     margin: 0px;
     padding: 0px;
-    // width: 50px;
-    // height: 50px;
+    text-color: #A7CAB1;
     text-align: center;
-    background-color: #eee;
+    background-color: #88B7B5;
+    line-height:200%
+    
 `
 
-
-class ViewField extends Component{
-    render(){
-        return <NumberLabel> {this.props.input_curr} </NumberLabel>
-    }
+export default (props)=>{
+    return <NumberLabel> {props.display_value} </NumberLabel>
 }
-
-
-export default ViewField;

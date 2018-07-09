@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button`
-    width: 50px;
-    height: 50px;
+    background-color: #847996;
+    border-color: #310a31;
+    text-color: #310a31;
+    height: 100%;
+    width: 100%;
 `
 
 class BaseButton extends Component{
