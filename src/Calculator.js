@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import styled from 'styled-components'
 import NumberButton from './Components/NumberButton'
+import ViewField from './Components/ViewField'
 
 const Background = styled.div`
   background-color: #aaa;
@@ -23,13 +24,14 @@ const ButtonLayout = styled.div`
   border-radius: 5px;
 `
 
+//Note that the input fields are stored as strings
 class Calculator extends Component {
   constructor(props){
     super(props);
 
     this.state = {
-      input_prev : 0,
-      input_curr : 0
+      input_prev : "0",
+      input_curr : "0"
     }
   }
 
@@ -47,27 +49,46 @@ class Calculator extends Component {
 
 
   evalulate = ()=>{
-    const computed_value = this.input_prev + this.input_curr;
-    this.setState({
-      input_prev : computed_value,
-      input_curr : computed_value
-    })
+    // const computed_value = String(parseInt(this.input_prev) + parseInt(this.input_curr));
+    // this.setState({
+    //   input_prev : computed_value,
+    //   input_curr : computed_value
+    // })
   }
 
   clear_inputs = ()=>{
     this.setState({
-      input_1 : 0,
-      input_2 : 0,
+      input_prev : '0',
+      input_curr : '0',
     })
   }
+
+  //When you press a number button, its value will update the input fields
+  number_btn_press = (val)=>{
+    console.log(val)
+    let new_input_curr;
+    if(this.state.input_curr === '0'){
+      new_input_curr = String(val);
+    }
+    else{
+      new_input_curr = this.state.input_curr + String(val);
+    }
+
+    this.setState({
+      input_curr : new_input_curr
+    })
+  }
+
+
 
   render() {
     return (
       <Background>
         <ButtonLayout>
-          <NumberButton num_value={0}/>
-          <NumberButton num_value={1}/>
-          <NumberButton num_value={2}/>
+          <ViewField input_curr = {this.state.input_curr} />
+          <NumberButton num_value={0} clickHandler={this.number_btn_press.bind(this,0)}/>
+          <NumberButton num_value={1} clickHandler={this.number_btn_press.bind(this,1)}/>
+          <NumberButton num_value={2} clickHandler={this.number_btn_press.bind(this,2)}/>
         </ButtonLayout> 
       </Background>
     );

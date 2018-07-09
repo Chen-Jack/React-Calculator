@@ -9,7 +9,7 @@ const Button = styled.button`
 class BaseButton extends Component{
     constructor(props){
         super(props);
-        if(this.props.clickHandler){         //overwrite the handler if available
+        if(this.props.clickHandler){         //overwrite the default handler if available
             this.clickHandler = this.props.clickHandler;
         }
     }

@@ -4,12 +4,9 @@ import BaseButton from './BaseButton';
 
 
 class NumberButton extends Component{
-    handleClick = ()=>{
-        console.log("This is the new overwridden handler")
-    }
 
     render(){
-        return <BaseButton clickHandler={this.handleClick}>{this.props.num_value}</BaseButton>
+        return <BaseButton clickHandler={this.props.clickHandler}>{this.props.num_value}</BaseButton>
     }
 
 }
