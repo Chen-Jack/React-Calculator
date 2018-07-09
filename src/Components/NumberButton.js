@@ -8,10 +8,6 @@ const NumberButton = styled.button`
     text-color: #310a31;
     height: 100%;
     width: 100%;
-
-    : focus{
-        z-index: -1;
-    }
 `
 
 

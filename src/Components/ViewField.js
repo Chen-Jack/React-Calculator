@@ -2,16 +2,22 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 
 
-const NumberLabel = styled.h1`
+const NumberLabel = styled.div`
+    display: inline-block;
     margin: 0px;
     padding: 0px;
-    text-color: #A7CAB1;
-    text-align: center;
     background-color: #88B7B5;
-    line-height:200%
+    text-align: right;
+    height: 100%;
+    width: 100%;
+    float: right;
     
+    .text {
+        display: inline;
+        font-size; 2em;
+    }
 `
 
 export default (props)=>{
-    return <NumberLabel> {props.display_value} </NumberLabel>
+    return <NumberLabel> <h1 class="text">{props.display_value}</h1> </NumberLabel>
 }
