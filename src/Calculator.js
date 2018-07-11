@@ -72,6 +72,7 @@ class Calculator extends Component {
     this.state = {
       input_prev : "0",
       input_curr : "0",
+      decimal_pressed: false,
       current_operation: this.OPERATION_ENUM.NONE
     }
   }
@@ -144,6 +145,7 @@ class Calculator extends Component {
       current_operation : this.OPERATION_ENUM.DONE,
       input_prev : '0',
       input_curr : '0',
+      decimal_pressed: false
     })
   }
 
@@ -158,6 +160,17 @@ class Calculator extends Component {
     this.setState({
       input_curr : new_input_curr
     })
+  }
+
+  appendDecimal = ()=>{
+    let new_input_curr = "";
+    if(!this.state.decimal_pressed){
+      new_input_curr = this.state.input_curr + '.';
+      this.setState({
+        decimal_pressed : true,
+        input_curr : new_input_curr
+      });
+    }      
   }
 
   wrapWithGridItem(child, [rowStart, rowStop=rowStart], [colStart, colStop=colStart]){
@@ -188,7 +201,7 @@ class Calculator extends Component {
           {this.wrapWithGridItem(<NumberButton value = {8} clickHandler = {this.pushToBuffer.bind(this,8)}/> , [2], [2] )}
           {this.wrapWithGridItem(<NumberButton value = {9} clickHandler = {this.pushToBuffer.bind(this,9)}/> , [2], [3] )}
 
-          {this.wrapWithGridItem(<NumberButton value = {"."} clickHandler = {()=>{}}/> , [5], [4] )}
+          {this.wrapWithGridItem(<NumberButton value = {"."} clickHandler = {this.appendDecimal}/> , [5], [4] )}
           {this.wrapWithGridItem(<NumberButton value = {"c"} clickHandler = {this.clearInputs}/> , [4], [4] )}
 
           {this.wrapWithGridItem(<OperationButton color={"#222"} value = {"="} clickHandler = {this.evalulate}/> , [4,6], [5] )}
