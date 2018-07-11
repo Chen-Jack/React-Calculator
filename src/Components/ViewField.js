@@ -1,23 +1,56 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 
+const ViewField = styled.div`
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+`
 
-const NumberLabel = styled.div`
-    display: inline-block;
+const CurrentBuffer = styled.span`
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+
     margin: 0px;
     padding: 0px;
     background-color: #88B7B5;
-    text-align: right;
-    height: 100%;
+    flex: 1;
+
+    font-size: 2em;
+
+`
+const HistoryBuffer = styled.span`
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+
     width: 100%;
-    float: right;
-    
-    .text {
-        display: inline;
-        font-size; 2em;
-    }
+    margin: 0px;
+    padding: 0px;
+    background-color: #88B7B5;
+
+    flex: 1;
+    position: relative;
+    z-index: 2;
+
 `
 
+const HorizontalLine = styled.hr`
+    display: absolute;
+    margin: 0px;
+    padding: 0px;
+    border-color: black;
+`
+
+
 export default (props)=>{
-    return <NumberLabel> <h1 class="text">{props.display_value}</h1> </NumberLabel>
+    return <ViewField>
+        <CurrentBuffer> {props.display_value} </CurrentBuffer>
+        <HorizontalLine/>
+        <HistoryBuffer> {props.history} </HistoryBuffer>
+    </ViewField>
 }

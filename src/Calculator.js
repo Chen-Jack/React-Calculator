@@ -6,34 +6,46 @@ import ViewField from './Components/ViewField'
 import OperationButton from './Components/OperationButton'
 
 const Container = styled.div`
-  background-color: #aaa;
-  margin: 0px;
-  padding: 0px;
-  position: fixed;
-  height: 100%;
-  width: 100%;
+  background-color: black;
+  height: 50vh;
+  width: 50vw;
+  
+  border-style:dotted;
+  border-color: purple;
+  border-width: thick;
+
+  min-width: 350px;
+  min-height: 500px;
+
+  max-width: 500px;
+  max-height: 700px;
 `
 
 const ButtonLayout = styled.div`
   background-color : #310a31;
   margin: 0px;
   padding: 0px;
-  height: 75%;
-  width: 50%;
-
-  grid-gap: 2px;
 
   border-radius: 5px;
 
+  height: 100%;
+  width: 100%;
+
+  grid-gap: 5px;
+
   display: grid;
-  grid-template-columns: repeat(5, 20%);
-  grid-template-rows: repeat(5, 20%);
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
 `
 
 const GridItem = styled.div`
     grid-column: ${(props)=> props.colStart + '/' + props.colStop};
     grid-row: ${(props)=> props.rowStart + '/' + props.rowStop};
-    background-color: white;
+    background-color: purple;
+
+    height: 100%;
+    width: 100%;  
+
 `
 
 //Note that the input fields are stored as strings
@@ -60,12 +72,15 @@ class Calculator extends Component {
 
   add = () => {
     const evaluated_val = String(parseInt(this.state.input_prev) + parseInt(this.state.input_curr))
+    const new_state = this.OPERATION_ENUM.ADD;
 
     this.setState({
-      current_operation : this.OPERATION_ENUM.ADD,
+      current_operation : new_state,
       input_prev : evaluated_val,
-      input_curr : evaluated_val
+      input_curr : '0'
     })
+
+    console.log("now", this.state.current_operation)
   }
 
   subtract = ()=>{
@@ -88,21 +103,28 @@ class Calculator extends Component {
 
 
   evalulate = ()=>{
-    let computed_value;
+    console.log('a', this.state.input_prev , ' ',  this.state.input_curr)
+    let computed_value = 0;
+
+    console.log("hm" , this.state.current_operation)
     switch(this.state.current_operation){
       case this.OPERATION_ENUM.ADD:
-        computed_value = String(parseInt(this.input_prev) + parseInt(this.input_curr));
+        computed_value = String(parseInt(this.state.input_prev) + parseInt(this.state.input_curr));
         break;
       case this.OPERATION_ENUM.SUB:
-        computed_value = String(parseInt(this.input_prev) - parseInt(this.input_curr));
+        computed_value = String(parseInt(this.state.input_prev) - parseInt(this.state.input_curr));
         break;
       case this.OPERATION_ENUM.MULT:
-        computed_value = String(parseInt(this.input_prev) * parseInt(this.input_curr));
+        computed_value = String(parseInt(this.state.input_prev) * parseInt(this.state.input_curr));
         break;
       case this.OPERATION_ENUM.DIV:
-        computed_value = String(parseInt(this.input_prev) / parseInt(this.input_curr));
+        computed_value = String(parseInt(this.state.input_prev) / parseInt(this.state.input_curr));
         break;
+      default:
+        console.log("switch " , this.state.current_operation)
     }
+
+    console.log('the result is ', computed_value);
     
     this.setState({
       current_operation : this.OPERATION_ENUM.DONE,
@@ -128,7 +150,6 @@ class Calculator extends Component {
       new_input_curr = this.state.input_curr + String(val);
 
     this.setState({
-      current_operation : this.OPERATION_ENUM.NONE,
       input_curr : new_input_curr
     })
   }
@@ -145,7 +166,7 @@ class Calculator extends Component {
       <Container>
         <ButtonLayout>
           
-          {this.wrapWithGridItem(<ViewField display_value = {this.state.input_curr}/>, [1] ,[1,6])}
+          {this.wrapWithGridItem(<ViewField history = {this.state.input_prev} display_value = {this.state.input_curr}/>, [1] ,[1,6])}
 
           {this.wrapWithGridItem(<NumberButton value = {0} clickHandler = {this.pushToBuffer.bind(this,0)}/> , [5], [1,4] )}
 
