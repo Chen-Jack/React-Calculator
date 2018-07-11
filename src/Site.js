@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import React from 'react'
 
 const FlushedText = styled.p`
+    display: inline-block;
+    margin-left: 20px;
 
 `
 
@@ -10,7 +12,7 @@ const FlushedText = styled.p`
 export default ()=>{
     return <div>
          <Calculator />
-        <FlushedText>  This is my calculator .</FlushedText>
+        <FlushedText>  This is my calculator.</FlushedText>
        
     </div>    
     

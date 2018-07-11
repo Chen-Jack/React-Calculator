@@ -5,7 +5,7 @@ import ViewField from './Components/ViewField'
 import OperationButton from './Components/OperationButton'
 
 const Container = styled.div`
-  background-color: black;
+  background-color: #eee;
   height: 50vh;
   width: 50vw;
   
@@ -26,7 +26,7 @@ const Container = styled.div`
 `
 
 const ButtonLayout = styled.div`
-  background-color : #310a31;
+  background-color : black;
   margin: 0px;
   padding: 0px;
 
@@ -45,10 +45,12 @@ const ButtonLayout = styled.div`
 const GridItem = styled.div`
     grid-column: ${(props)=> props.colStart + '/' + props.colStop};
     grid-row: ${(props)=> props.rowStart + '/' + props.rowStop};
-    background-color: purple;
+    background-color: #eee;
 
     height: 100%;
     width: 100%;  
+    
+    border-radius: 3px;
 
 `
 

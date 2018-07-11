@@ -4,18 +4,18 @@ import BaseButton from './BaseButton';
 
 const NumberButton = styled.button`
     background-color: #fdfdfd;
-    text-color: #310a31;
     height: 100%;
     width: 100%;
 
-    border-radius: 3px;
+    border-radius: inherit;
 
     font-size: 2em;
 
     padding: 0px;
     margin: 0px;
 
-    border-color: black;
+    
+    border-color: #fdfdfd;
 
     :focus{
         position: relative;
