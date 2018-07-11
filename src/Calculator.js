@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import styled from 'styled-components'
 import NumberButton from './Components/NumberButton'
 import ViewField from './Components/ViewField'
@@ -10,12 +9,17 @@ const Container = styled.div`
   height: 50vh;
   width: 50vw;
   
-  border-style:dotted;
-  border-color: purple;
+  float: left;
+
+  border-style: solid;
+  border-color: black;
   border-width: thick;
 
   min-width: 350px;
   min-height: 500px;
+
+  border-radius: 5px;
+
 
   max-width: 500px;
   max-height: 700px;
@@ -26,12 +30,12 @@ const ButtonLayout = styled.div`
   margin: 0px;
   padding: 0px;
 
-  border-radius: 5px;
-
+  
   height: 100%;
   width: 100%;
 
   grid-gap: 5px;
+
 
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -185,7 +189,7 @@ class Calculator extends Component {
           {this.wrapWithGridItem(<NumberButton value = {"."} clickHandler = {()=>{}}/> , [5], [4] )}
           {this.wrapWithGridItem(<NumberButton value = {"c"} clickHandler = {this.clearInputs}/> , [4], [4] )}
 
-          {this.wrapWithGridItem(<OperationButton color={"#eee"} value = {"="} clickHandler = {this.evalulate}/> , [4,6], [5] )}
+          {this.wrapWithGridItem(<OperationButton color={"#222"} value = {"="} clickHandler = {this.evalulate}/> , [4,6], [5] )}
           {this.wrapWithGridItem(<OperationButton value = {"+"} clickHandler = {this.add}/> ,       [2], [4] )}
           {this.wrapWithGridItem(<OperationButton value = {"-"} clickHandler = {this.subtract}/> ,  [2], [5] )}
           {this.wrapWithGridItem(<OperationButton value = {"*"} clickHandler = {this.multiply}/> ,  [3], [4] )}

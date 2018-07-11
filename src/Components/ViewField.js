@@ -11,27 +11,33 @@ const ViewField = styled.div`
 
 const CurrentBuffer = styled.span`
     display:flex;
+    box-sizing: border-box;
+    padding: 10px;
     align-items: center;
     justify-content: flex-end;
     width: 100%;
+    color: #fdfdfd;
 
-    margin: 0px;
-    padding: 0px;
-    background-color: #88B7B5;
-    flex: 1;
 
-    font-size: 2em;
+   
+    background-color: #222;
+    flex: 3;
+
+    font-size: 3em;
 
 `
 const HistoryBuffer = styled.span`
+    box-sizing: border-box;
+    padding: 10px;
     display:flex;
     align-items: center;
     justify-content: flex-end;
+    color:#fdfdfd;
+    font-size: 1.5em;
 
     width: 100%;
     margin: 0px;
-    padding: 0px;
-    background-color: #88B7B5;
+    background-color: #222;
 
     flex: 1;
     position: relative;
@@ -40,10 +46,10 @@ const HistoryBuffer = styled.span`
 `
 
 const HorizontalLine = styled.hr`
-    display: absolute;
     margin: 0px;
     padding: 0px;
-    border-color: black;
+    width: 100%;
+    border-color: white;
 `
 
 

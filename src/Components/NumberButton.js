@@ -3,10 +3,17 @@ import styled from 'styled-components';
 import BaseButton from './BaseButton';
 
 const NumberButton = styled.button`
-    background-color: #847996;
+    background-color: #fdfdfd;
     text-color: #310a31;
     height: 100%;
     width: 100%;
+
+    border-radius: 3px;
+
+    font-size: 2em;
+
+    padding: 0px;
+    margin: 0px;
 
     border-color: black;
 
@@ -14,6 +21,7 @@ const NumberButton = styled.button`
         position: relative;
         outline-color: red;
         z-index: 100;
+        outline-width: thick;
     }
 `
 
