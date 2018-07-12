@@ -12,7 +12,7 @@ const FlushedText = styled.p`
 export default ()=>{
     return <div>
          <Calculator />
-        <FlushedText>  This is my calculator.</FlushedText>
+        <FlushedText>  This is my calculator .</FlushedText>
        
     </div>    
     

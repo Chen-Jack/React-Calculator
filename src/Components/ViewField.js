@@ -55,7 +55,7 @@ const HorizontalLine = styled.hr`
 
 export default (props)=>{
     return <ViewField>
-        <CurrentBuffer> {props.display_value} </CurrentBuffer>
+        <CurrentBuffer> {props.display} </CurrentBuffer>
         <HorizontalLine/>
         <HistoryBuffer> {props.history} </HistoryBuffer>
     </ViewField>
